@@ -10,12 +10,12 @@ DeqinActor 是一个面向 Go 1.21+ 的通用 Actor 并发框架，核心目标�
 flowchart LR
   A[Caller Actor/BaseActor] -->|Tell/SendAsync/Ask| S[System]
   S --> R[Registry]
-  S --> L[RateLimiter(TokenBucket)]
-  S --> M[Metrics(/metrics)]
-  S -->|local| MB[Mailbox(urgent+normal)]
+  S --> L["RateLimiter(TokenBucket)"]
+  S --> M["Metrics(/metrics)"]
+  S -->|local| MB["Mailbox(urgent+normal)"]
   S -->|remote| GRPC[gRPC Transport]
   MB --> B[Actor Loop]
-  B --> H[Receive(ctx,msg)]
+  B --> H["Receive(ctx,msg)"]
   H -->|ctx.Respond| S
 ```
 
